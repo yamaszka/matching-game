@@ -1,5 +1,21 @@
 // const card1=document.querySelector('.card');
 // card1.addEventListener('click', function(){this.classList.add('open');});
+var moves=0;
+
+//randamowanie elementów
+const cards=["diamond", "paper-plane-o", "anchor", "bolt", "cube", "leaf", "bicycle", "bomb", "diamond", "paper-plane-o", "anchor", "bolt", "cube", "leaf", "bicycle", "bomb"];
+cards.sort(function(a, b){return 0.5 - Math.random()});
+console.log(cards);
+
+//randamowanie kard
+let deck="";
+for (let i=0; i<=15; i++){
+    deck+=`<li class="card">
+        <i class="fa fa-${cards[i]}"></i>
+    </li>`
+};
+
+document.querySelector('.deck').innerHTML=deck;
 
 
 
@@ -14,6 +30,13 @@ var hi = document.querySelectorAll(".card");
 //wykrywa czy para czy bład
 
     if (qw.length==2) {
+        moves+=1;
+        console.log(moves);
+        document.querySelector('.moves').innerHTML=moves;
+            if (moves>1){
+                
+            }
+
             if (qw[0].firstElementChild.className==qw[1].firstElementChild.className){
                 console.log('para');
 
@@ -47,7 +70,7 @@ var hi = document.querySelectorAll(".card");
                 el.classList.add('error');
 
                 // el.classList.remove('match');
-                // el.classList.remove('error');
+                setTimeout(function(){el.classList.remove('error')}, 1000);
             });
 
             }
