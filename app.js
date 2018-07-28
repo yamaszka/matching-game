@@ -33,9 +33,18 @@ var hi = document.querySelectorAll(".card");
         moves+=1;
         console.log(moves);
         document.querySelector('.moves').innerHTML=moves;
-            if (moves>1){
-                
+
+        //dodawanie gwiazdek
+            if (moves==12){
+                document.querySelector(".stars").innerHTML='<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>';
             }
+            if (moves==18){
+                document.querySelector(".stars").innerHTML='<i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>';
+            }
+            if (moves==24){
+                document.querySelector(".stars").innerHTML='<i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>';
+            }
+
 
             if (qw[0].firstElementChild.className==qw[1].firstElementChild.className){
                 console.log('para');
