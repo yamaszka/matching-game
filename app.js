@@ -55,8 +55,6 @@ var hi = document.querySelectorAll(".card");
             if (qw[0].firstElementChild.className==qw[1].firstElementChild.className){
                 console.log('para');
 
-
-
                 [...qw].forEach(function(el) {
                 el.classList.remove('open');
                 el.classList.add('match');
@@ -64,13 +62,20 @@ var hi = document.querySelectorAll(".card");
                 // el.classList.remove('error');
 
                 var end=document.querySelectorAll(".match");
-                    if (end.length==16){
+                    if (end.length==1){
                         console.log("wygrałeś");
-                        document.querySelector('.deck').remove();
-                        document.querySelector('.stars').remove();
-                        const element=document.createElement('span');
-                        element.textContent="wygrałeś \n ilośc ruchów <br> zagraj ponownie";
-                        document.querySelector('main').appendChild(element);
+                        setTimeout(function(){
+                            document.querySelector('.deck').remove();
+                            document.querySelector('.panel').remove();
+                            const element=document.createElement('div');
+                            element.setAttribute("class", "game_end")
+                            const text=`<div class="icon"><i class="fa fa-check-circle-o" aria-hidden="true"></i></div>
+                                        <div class="con">Congratulations! You've won!</div>
+                                        <div class="moves_score">${moves} moves were needed!</div>
+                                        <button class="button">Play again</button>`;
+                            element.innerHTML=text;
+                            document.querySelector('main').appendChild(element);}, 1000);//setTime
+
 
                     }
 
@@ -95,11 +100,17 @@ var hi = document.querySelectorAll(".card");
 
 //kończenie gry
 
+//obsługa button - tu może brakowa deck albo jakoś tak
+// document.querySelector('.button').addEventListener('click',function(){
+// start_game();
+// });
 
 //obsługa repeat
 document.querySelector('.repeat').addEventListener('click',function(){
 start_game();
 });
+
+
 
 // document.querySelector('.card').firstElementChild.className; --pobiera klasę z i
 
