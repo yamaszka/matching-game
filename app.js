@@ -2,6 +2,7 @@
 // card1.addEventListener('click', function(){this.classList.add('open');});
 var moves=0;
 
+function start_game(){
 //randamowanie elementów
 const cards=["diamond", "paper-plane-o", "anchor", "bolt", "cube", "leaf", "bicycle", "bomb", "diamond", "paper-plane-o", "anchor", "bolt", "cube", "leaf", "bicycle", "bomb"];
 cards.sort(function(a, b){return 0.5 - Math.random()});
@@ -15,9 +16,14 @@ for (let i=0; i<=15; i++){
     </li>`
 };
 
+moves=0;
+
 document.querySelector('.deck').innerHTML=deck;
+document.querySelector('.stars').innerHTML='<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>';
+document.querySelector('.moves').innerHTML=moves;
+}//start game
 
-
+start_game();
 
 //odkrywanie kart
 var hi = document.querySelectorAll(".card");
@@ -92,11 +98,7 @@ var hi = document.querySelectorAll(".card");
 
 //obsługa repeat
 document.querySelector('.repeat').addEventListener('click',function(){
-    [...hi].forEach(function(el) {
-    el.classList.remove('open');
-    el.classList.remove('match');
-    el.classList.remove('error');
-});
+start_game();
 });
 
 // document.querySelector('.card').firstElementChild.className; --pobiera klasę z i
